@@ -1,5 +1,6 @@
 import 'package:bookia/core/routes/app_routes.dart';
 import 'package:bookia/features/auth/presntation/ui/login_screen.dart';
+import 'package:bookia/features/welcome/presentation/ui/welcome_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +9,8 @@ class AppRouter {
     switch (settings.name) {
       case AppRoutes.loginScreen:
         return MaterialPageRoute(builder: (_)=>LoginScreen());
-      
+      case AppRoutes.welcomeScreen:
+        return MaterialPageRoute(builder: (_)=>WelcomeScreen());
     }
   }
 }

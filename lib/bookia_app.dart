@@ -16,6 +16,7 @@ class BookiaApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
@@ -23,7 +24,7 @@ class BookiaApp extends StatelessWidget {
         fontFamily: 'DM',
         scaffoldBackgroundColor: AppColors.bgColor
       ),
-        initialRoute:AppRoutes.loginScreen ,
+        initialRoute:AppRoutes.welcomeScreen ,
         onGenerateRoute: AppRouter.onGenerateRoute,
       ),
     );
