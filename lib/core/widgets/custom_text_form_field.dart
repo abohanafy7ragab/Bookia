@@ -7,14 +7,14 @@ class CustomTextFormField extends StatefulWidget {
   final bool isPassword;
   final GlobalKey<FormState> myKey;
   final String? Function(String? value)? validate;
-  final TextEditingController controller ;
+  final TextEditingController controller;
   const new({
     super.key,
     required this.hintText,
     required this.isPassword,
     required this.myKey,
     required this.validate,
-    required this.controller
+    required this.controller,
   });
 
   @override
@@ -34,7 +34,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           FocusManager.instance.primaryFocus?.unfocus();
         },
         validator: (value) {
-         return widget.validate!(value);
+          return widget.validate!(value);
         },
         // autovalidateMode: AutovalidateMode.onUnfocus,
         controller: widget.controller,
