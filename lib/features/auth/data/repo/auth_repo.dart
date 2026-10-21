@@ -6,8 +6,11 @@ class AuthRepo {
   static Future<bool> login({required String email, required String password}) async {
     try {
       final respnse = await dio.post(
-        "http://localhost:8000/api/login",
-        data: {"email": email, "password": password},
+        "https://codingarabic.eraapro.com/api/login",
+        data: {
+          "email": email,
+          "password": password
+        },
       );
       if (respnse.statusCode == 200) {
         return true;
