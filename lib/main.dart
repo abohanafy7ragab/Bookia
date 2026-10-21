@@ -1,14 +1,21 @@
 import 'package:bookia/bookia_app.dart';
+import 'package:bookia/core/services/local_helper/local_helper.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 
-void main()async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  runApp(EasyLocalization(
-    supportedLocales: [Locale('en'), Locale('ar')],
-      path: 'assets/transilation', // <-- change the path of the translation files 
+  await LocalHelper.init();
+  // LocalHelper.prefs?.clear();
+
+  runApp(
+    EasyLocalization(
+      supportedLocales: [Locale('en'), Locale('ar')],
+      path:
+          'assets/transilation', // <-- change the path of the translation files
       fallbackLocale: Locale('en'),
-    child: BookiaApp())
-    );
+      child: BookiaApp(),
+    ),
+  );
 }

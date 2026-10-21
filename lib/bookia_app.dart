@@ -1,6 +1,8 @@
 import 'package:bookia/core/routes/app_router.dart';
 import 'package:bookia/core/routes/app_routes.dart';
+import 'package:bookia/core/services/local_helper/local_helper.dart';
 import 'package:bookia/core/theme/app_colors.dart';
+import 'package:bookia/core/utils/app_contants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,16 +19,25 @@ class BookiaApp extends StatelessWidget {
       splitScreenMode: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      theme:ThemeData(
-        fontFamily: 'DM',
-        scaffoldBackgroundColor: AppColors.bgColor
-      ),
-        initialRoute:AppRoutes.loginScreen ,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        theme: ThemeData(
+          fontFamily: 'DM',
+          scaffoldBackgroundColor: AppColors.bgColor,
+        ),
+        initialRoute: initPage(),
         onGenerateRoute: AppRouter.onGenerateRoute,
       ),
     );
+  }
+
+  String? initPage() {
+    // print(LocalHelper.prefs?.getString(AppContants.token));
+    if (LocalHelper.prefs?.getString(AppContants.token) != null) {
+      return AppRoutes.homeScreen;
+    } else {
+      return AppRoutes.welcomeScreen;
+    }
   }
 }

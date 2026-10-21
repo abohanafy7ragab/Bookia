@@ -13,7 +13,7 @@ class AuthCubit extends Cubit<AuthState> {
     if (response) {
       emit(loginSuccessState());
     } else {
-      emit(loginErrorState());  
+      emit(loginErrorState());
     }
   }
 }
