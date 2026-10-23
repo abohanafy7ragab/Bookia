@@ -8,3 +8,6 @@
 
 # register screen 
 <img width="760" height="1605" alt="image" src="https://github.com/user-attachments/assets/c0245da8-87d8-4c9c-b3e4-185b80710371" />
+
+#home screen
+<img width="795" height="1680" alt="image" src="https://github.com/user-attachments/assets/96792fa1-6c3a-4192-b422-beb769a87ae1" />
