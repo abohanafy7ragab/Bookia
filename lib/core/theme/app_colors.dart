@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
 class AppColors {
@@ -7,4 +8,5 @@ class AppColors {
   static const Color gray = Color(0xff8391A1);
   static const Color darkGray = Color(0xff6A707C);
   static const Color bgColor = Color(0xffF7F8F9);
+  static const Color containerLightTheme = Colors.white;
 }

@@ -22,4 +22,11 @@ class AppTextStyle {
   static TextStyle f14darkGray = TextStyle(
     color: AppColors.darkGray
   );
+  static TextStyle bookTitleItem = TextStyle(
+    color: AppColors.dark,fontSize: 18.sp
+  );
+  static TextStyle bookPriceItem = TextStyle(
+    color: AppColors.dark,fontSize: 16.sp
+  );
+  
 }
