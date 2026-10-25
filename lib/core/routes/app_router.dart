@@ -2,6 +2,8 @@ import 'package:bookia/core/routes/app_routes.dart';
 import 'package:bookia/features/auth/presntation/cubit/cubit/auth_cubit.dart';
 import 'package:bookia/features/auth/presntation/ui/login_screen.dart';
 import 'package:bookia/features/auth/presntation/ui/register_screen.dart';
+import 'package:bookia/features/book_details/presentation/cubit/book_details_cubit.dart';
+import 'package:bookia/features/book_details/presentation/ui/book_details_screen.dart';
 import 'package:bookia/features/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/features/home/presentation/ui/home_screen.dart';
 import 'package:bookia/features/home/presentation/ui/search_screen.dart';
@@ -38,6 +40,14 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => HomeCubit()..search(""),
             child: SearchScreen(),
+          ),
+        );
+      case AppRoutes.bookDetailsScreen:
+        int id = settings.arguments as int;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => BookDetailsCubit()..getDetails(id),
+            child: BookDetailsScreen(),
           ),
         );
     }

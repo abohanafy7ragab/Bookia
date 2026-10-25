@@ -28,5 +28,8 @@ class AppTextStyle {
   static TextStyle bookPriceItem = TextStyle(
     color: AppColors.dark,fontSize: 16.sp
   );
+  static TextStyle f15gold = TextStyle(
+    color: AppColors.main,fontSize: 15.sp
+  );
   
 }

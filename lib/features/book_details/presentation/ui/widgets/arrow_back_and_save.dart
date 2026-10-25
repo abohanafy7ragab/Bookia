@@ -28,7 +28,7 @@ class ArrowBackAndSave extends StatelessWidget {
             child: Icon(Icons.arrow_back_ios, size: 19),
           ),
         ),
-        Icon(Icons.save,size: 25,)
+        Icon(Icons.bookmark_add,size: 25,)
       ],
     );
   }

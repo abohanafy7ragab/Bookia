@@ -14,3 +14,6 @@
 
 #search screen
 <img width="752" height="1590" alt="image" src="https://github.com/user-attachments/assets/c4d47fb9-5a8b-4cb7-8c19-92567919d3a1" />
+
+#Book Details
+<img width="770" height="1627" alt="image" src="https://github.com/user-attachments/assets/9a3f3de2-e05d-4505-9728-b5804c8545ba" />
