@@ -11,3 +11,6 @@
 
 #home screen
 <img width="795" height="1680" alt="image" src="https://github.com/user-attachments/assets/96792fa1-6c3a-4192-b422-beb769a87ae1" />
+
+#search screen
+<img width="752" height="1590" alt="image" src="https://github.com/user-attachments/assets/c4d47fb9-5a8b-4cb7-8c19-92567919d3a1" />
