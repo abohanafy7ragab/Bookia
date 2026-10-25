@@ -14,7 +14,27 @@ class HomeRepo {
         return books;
       }
     } catch (e) {
-      
+
+    }
+  }
+  
+
+  static Dio dio2 = Dio();
+  static Future<List<Products?>?> search(String text) async {
+    try {
+      final response = await dio2?.get(
+        "https://codingarabic.eraapro.com/api/products-search",
+        queryParameters: {"name": text},
+      );
+      print(response?.statusCode);
+      if (response?.statusCode == 200) {
+        BooksModel book = BooksModel.fromJson(response?.data);
+        return book.data?.products;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      return null;
     }
   }
 }

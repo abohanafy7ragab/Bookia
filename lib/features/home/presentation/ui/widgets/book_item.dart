@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BookItem extends StatelessWidget {
-   final Products? product;
+  final Products? product;
   const new({super.key, required this.product});
 
   @override

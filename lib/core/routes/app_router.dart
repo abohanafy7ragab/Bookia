@@ -4,6 +4,7 @@ import 'package:bookia/features/auth/presntation/ui/login_screen.dart';
 import 'package:bookia/features/auth/presntation/ui/register_screen.dart';
 import 'package:bookia/features/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/features/home/presentation/ui/home_screen.dart';
+import 'package:bookia/features/home/presentation/ui/search_screen.dart';
 import 'package:bookia/features/welcome/presentation/ui/welcome_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,13 @@ class AppRouter {
         );
       case AppRoutes.registerScreen:
         return MaterialPageRoute(builder: (_) => RegisterScreen());
+      case AppRoutes.searchScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => HomeCubit()..search(""),
+            child: SearchScreen(),
+          ),
+        );
     }
   }
 }

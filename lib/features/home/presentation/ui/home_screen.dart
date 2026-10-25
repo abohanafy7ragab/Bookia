@@ -1,3 +1,4 @@
+import 'package:bookia/core/routes/app_routes.dart';
 import 'package:bookia/core/theme/app_text_style.dart';
 import 'package:bookia/features/home/data/models/Books_model.dart';
 import 'package:bookia/features/home/presentation/cubit/home_cubit.dart';
@@ -41,7 +42,12 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Icon(Icons.search, size: 24),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, AppRoutes.searchScreen);
+                    },
+                    child: Icon(Icons.search, size: 24),
+                  ),
                 ],
               ),
               30.verticalSpace,
@@ -49,20 +55,23 @@ class HomeScreen extends StatelessWidget {
                 child: BlocBuilder<HomeCubit, HomeState>(
                   builder: (context, state) {
                     if (state is GetBestSellerLaoding) {
-                      return  Skeletonizer(
+                      return Skeletonizer(
                         child: GridView.builder(
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: .55,
-                            mainAxisSpacing: 14.h,
-                            crossAxisSpacing: 18.h,
-                          ),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: .55,
+                                mainAxisSpacing: 14.h,
+                                crossAxisSpacing: 18.h,
+                              ),
                           itemBuilder: (context, index) {
-                            return BookItem(product:Products(
-                              image: "https://www.magnific.com/free-photos-vectors/book",
-                              name: "test",
-                              price: "99"
-                            ) );
+                            return BookItem(
+                              product: Products(
+                                image: "https://www.magnific.com/free-photos-vectors/book",
+                                name: "test",
+                                price: "99",
+                              ),
+                            );
                           },
                           itemCount: 6,
                         ),
@@ -93,5 +102,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
