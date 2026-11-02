@@ -4,6 +4,7 @@ import 'package:bookia/features/auth/presntation/ui/login_screen.dart';
 import 'package:bookia/features/auth/presntation/ui/register_screen.dart';
 import 'package:bookia/features/book_details/presentation/cubit/book_details_cubit.dart';
 import 'package:bookia/features/book_details/presentation/ui/book_details_screen.dart';
+import 'package:bookia/features/bottom_nav_bar/presentation/ui/bottm_nav_Bar_screen.dart';
 import 'package:bookia/features/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/features/home/presentation/ui/home_screen.dart';
 import 'package:bookia/features/home/presentation/ui/search_screen.dart';
@@ -50,6 +51,9 @@ class AppRouter {
             child: BookDetailsScreen(),
           ),
         );
+      case AppRoutes.bottomNavBarScreen:
+        return MaterialPageRoute(builder: (_) => BottmNavBarScreen());
     }
+    return null;
   }
 }

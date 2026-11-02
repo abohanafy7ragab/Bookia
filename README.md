@@ -17,3 +17,6 @@
 
 #Book Details
 <img width="770" height="1627" alt="image" src="https://github.com/user-attachments/assets/9a3f3de2-e05d-4505-9728-b5804c8545ba" />
+
+#Bootom Navigation bar screen 
+<img width="757" height="1600" alt="image" src="https://github.com/user-attachments/assets/a918694d-58cc-4839-98d7-75b15498dc13" />

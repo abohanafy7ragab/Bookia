@@ -35,7 +35,7 @@ class BookiaApp extends StatelessWidget {
   String? initPage() {
     // print(LocalHelper.prefs?.getString(AppContants.token));
     if (LocalHelper.prefs?.getString(AppContants.token) != null) {
-      return AppRoutes.homeScreen;
+      return AppRoutes.bottomNavBarScreen;
     } else {
       return AppRoutes.welcomeScreen;
     }

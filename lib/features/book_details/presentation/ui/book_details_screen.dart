@@ -2,7 +2,6 @@ import 'package:bookia/core/theme/app_colors.dart';
 import 'package:bookia/core/theme/app_text_style.dart';
 import 'package:bookia/features/book_details/presentation/cubit/book_details_cubit.dart';
 import 'package:bookia/features/book_details/presentation/ui/widgets/arrow_back_and_save.dart';
-import 'package:bookia/features/home/data/models/Books_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

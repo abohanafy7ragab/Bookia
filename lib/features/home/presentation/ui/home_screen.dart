@@ -15,69 +15,45 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12.w),
-          child: Column(
-            children: [
-              10.verticalSpace,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Image.asset(
-                        "assets/images/book.png",
-                        width: 24.w,
-                        height: 24.h,
-                        fit: BoxFit.contain,
-                      ),
-                      7.horizontalSpace,
-                      Text(
-                        "Bookia",
-                        style: AppTextStyle.f20regular.copyWith(
-                          fontSize: 22.sp,
-                        ),
-                      ),
-                    ],
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, AppRoutes.searchScreen);
-                    },
-                    child: Icon(Icons.search, size: 24),
-                  ),
-                ],
-              ),
-              30.verticalSpace,
-              Expanded(
-                child: BlocBuilder<HomeCubit, HomeState>(
-                  builder: (context, state) {
-                    if (state is GetBestSellerLaoding) {
-                      return Skeletonizer(
-                        child: GridView.builder(
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: .55,
-                                mainAxisSpacing: 14.h,
-                                crossAxisSpacing: 18.h,
-                              ),
-                          itemBuilder: (context, index) {
-                            return BookItem(
-                              product: Products(
-                                image: "https://www.magnific.com/free-photos-vectors/book",
-                                name: "test",
-                                price: "99",
-                              ),
-                            );
-                          },
-                          itemCount: 6,
-                        ),
-                      );
-                    } else if (state is GetBestSellersuccess) {
-                      return GridView.builder(
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 12.w),
+        child: Column(
+          children: [
+            10.verticalSpace,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Image.asset(
+                      "assets/images/book.png",
+                      width: 24.w,
+                      height: 24.h,
+                      fit: BoxFit.contain,
+                    ),
+                    7.horizontalSpace,
+                    Text(
+                      "Bookia",
+                      style: AppTextStyle.f20regular.copyWith(fontSize: 22.sp),
+                    ),
+                  ],
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.searchScreen);
+                  },
+                  child: Icon(Icons.search, size: 24),
+                ),
+              ],
+            ),
+            30.verticalSpace,
+            Expanded(
+              child: BlocBuilder<HomeCubit, HomeState>(
+                builder: (context, state) {
+                  if (state is GetBestSellerLaoding) {
+                    return Skeletonizer(
+                      child: GridView.builder(
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           childAspectRatio: .55,
@@ -85,18 +61,37 @@ class HomeScreen extends StatelessWidget {
                           crossAxisSpacing: 18.h,
                         ),
                         itemBuilder: (context, index) {
-                          return BookItem(product: state.products?[index]);
+                          return BookItem(
+                            product: Products(
+                              image: "https://www.magnific.com/free-photos-vectors/book",
+                              name: "test",
+                              price: "99",
+                            ),
+                          );
                         },
-                        itemCount: state.products?.length,
-                      );
-                    } else {
-                      return Center(child: Text("Error"));
-                    }
-                  },
-                ),
+                        itemCount: 6,
+                      ),
+                    );
+                  } else if (state is GetBestSellersuccess) {
+                    return GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: .55,
+                        mainAxisSpacing: 14.h,
+                        crossAxisSpacing: 18.h,
+                      ),
+                      itemBuilder: (context, index) {
+                        return BookItem(product: state.products?[index]);
+                      },
+                      itemCount: state.products?.length,
+                    );
+                  } else {
+                    return Center(child: Text("Error"));
+                  }
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

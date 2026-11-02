@@ -8,8 +8,8 @@ class BookDetailsRepo {
       final response = await dio.get(
         "https://codingarabic.eraapro.com/api/products/$id",
       );
-      if (response?.statusCode == 200) {
-        BooksDetailsModel book = BooksDetailsModel.fromJson(response?.data);
+      if (response.statusCode == 200) {
+        BooksDetailsModel book = BooksDetailsModel.fromJson(response.data);
         return book;
       } else {
         return null;
