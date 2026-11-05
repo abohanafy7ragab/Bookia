@@ -20,3 +20,9 @@
 
 #Bootom Navigation bar screen 
 <img width="757" height="1600" alt="image" src="https://github.com/user-attachments/assets/a918694d-58cc-4839-98d7-75b15498dc13" />
+
+#cart screen
+<img width="852" height="1802" alt="image" src="https://github.com/user-attachments/assets/2fe65e78-d929-405a-847e-0d2a9c6864cc" />
+
+#profile screen
+<img width="852" height="1802" alt="image" src="https://github.com/user-attachments/assets/220e5403-dc4a-437a-9672-84f16814500d" />

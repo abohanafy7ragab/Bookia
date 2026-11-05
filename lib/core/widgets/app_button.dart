@@ -22,7 +22,7 @@ class AppButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
-          child: Text("login", style: AppTextStyle.mainButtonTextStyle),
+          child: Text(text, style: AppTextStyle.mainButtonTextStyle),
         ),
       ),
     );

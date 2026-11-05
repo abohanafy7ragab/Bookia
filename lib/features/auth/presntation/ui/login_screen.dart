@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   );
                 } else if (state is loginSuccessState) {
                   Navigator.pop(context);
-                  Navigator.pushNamed(context, AppRoutes.homeScreen);
+                  Navigator.pushNamed(context, AppRoutes.bottomNavBarScreen);
                 } else {
                   Navigator.pop(context);
                   showDialog(

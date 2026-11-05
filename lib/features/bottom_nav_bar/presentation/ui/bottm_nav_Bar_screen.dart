@@ -1,6 +1,9 @@
 import 'package:bookia/core/theme/app_colors.dart';
+import 'package:bookia/features/cart/presentation/ui/cart_screen.dart';
 import 'package:bookia/features/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/features/home/presentation/ui/home_screen.dart';
+import 'package:bookia/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:bookia/features/profile/presentation/ui/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,12 +23,14 @@ class _BottmNavBarScreenState extends State<BottmNavBarScreen> {
       create: (context) => HomeCubit()..getBestSellerBooks(),
       child: HomeScreen(),
     ),
-
+    CartScreen(),
+    BlocProvider(create: (context) => ProfileCubit()..getProfile(),
+     child: ProfileScreen()),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[0],
+      body: index == 0 ? screens[0] : index==3?screens[2]:screens[1],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         selectedItemColor: AppColors.main,
@@ -39,22 +44,22 @@ class _BottmNavBarScreenState extends State<BottmNavBarScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             activeIcon: Icon(Icons.home, color: AppColors.main),
-            label: ""
+            label: "",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bookmark),
             activeIcon: Icon(Icons.bookmark, color: AppColors.main),
-            label: ""
+            label: "",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             activeIcon: Icon(Icons.shopping_cart, color: AppColors.main),
-            label: ""
+            label: "",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             activeIcon: Icon(Icons.person, color: AppColors.main),
-            label: ""
+            label: "",
           ),
         ],
         backgroundColor: AppColors.containerLightTheme,

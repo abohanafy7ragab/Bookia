@@ -31,5 +31,11 @@ class AppTextStyle {
   static TextStyle f15gold = TextStyle(
     color: AppColors.main,fontSize: 15.sp
   );
+  static TextStyle f18Black3 = TextStyle(
+    color: AppColors.black3,fontSize: 18.sp
+  );
+  static TextStyle f18Black600 = TextStyle(
+    color: AppColors.dark,fontSize: 18.sp,fontWeight: FontWeight(600)
+  );
   
 }
