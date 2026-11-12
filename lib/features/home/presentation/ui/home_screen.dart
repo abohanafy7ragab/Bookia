@@ -85,9 +85,10 @@ class HomeScreen extends StatelessWidget {
                       },
                       itemCount: state.products?.length,
                     );
-                  } else {
-                    return Center(child: Text("Error"));
+                  } else if(state is GetBestSellerError){
+                    return Center(child: Text(state.error??""));
                   }
+                  return Center(child: Text("error"));
                 },
               ),
             ),

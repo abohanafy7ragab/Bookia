@@ -1,13 +1,16 @@
 part of 'home_cubit.dart';
 
-@immutable
+
 sealed class HomeState {}
 
 final class HomeInitial extends HomeState {}
 
 final class GetBestSellerLaoding extends HomeState {}
 
-final class GetBestSellerError extends HomeState {}
+final class GetBestSellerError extends HomeState {
+  final String? error;
+  GetBestSellerError({ this.error});
+}
 
 final class GetBestSellersuccess extends HomeState {
   List<Products>? products;
