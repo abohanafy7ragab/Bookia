@@ -4,8 +4,10 @@ import 'package:bookia/core/theme/app_text_style.dart';
 import 'package:bookia/core/widgets/app_button.dart';
 import 'package:bookia/core/widgets/arrow_back.dart';
 import 'package:bookia/core/widgets/custom_text_form_field.dart';
+import 'package:bookia/features/auth/presntation/cubit/cubit/auth_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -15,14 +17,10 @@ class RegisterScreen extends StatefulWidget {
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
+bool isObscure = false;
+
 class _RegisterScreenState extends State<RegisterScreen> {
   final _key1 = GlobalKey<FormState>();
-
-  final _key2 = GlobalKey<FormState>();
-
-  final _key3 = GlobalKey<FormState>();
-
-  final _key4 = GlobalKey<FormState>();
 
   final _usernameController = TextEditingController();
 
@@ -49,112 +47,237 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.0.w),
-            child: Column(
-              children: [
-                11.verticalSpace,
-                ArrowBack(),
-                29.verticalSpace,
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Hello! Register to get\nstarted",
-                    style: AppTextStyle.f30Regular,
-                  ),
-                ),
-                32.verticalSpace,
-                CustomTextFormField(
-                  hintText: "Username",
-                  isPassword: false,
-                  myKey: _key1,
-                  validate: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a username';
-                    }
-                    if (value.length < 4) {
-                      return 'Username must be between 4 or more';
-                    }
-                    return null;
-                  },
-                  controller: _usernameController,
-                ),
-                12.verticalSpace,
-                CustomTextFormField(
-                  hintText: "Email",
-                  isPassword: false,
-                  myKey: _key2,
-                  validate: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter your email';
-                    }
-                    if (!RegExp(r'@').hasMatch(value)) return 'email is worng';
-                    return null;
-                  },
-                  controller: _emailController,
-                ),
-                12.verticalSpace,
-                CustomTextFormField(
-                  hintText: "Password",
-                  isPassword: true,
-                  myKey: _key3,
-                  validate: (value) {
-                    final v = value ?? '';
-                    if (v.isEmpty) return 'password required';
-                    if (v.length < 8)
-                      return 'password should be at least 8 charachter';
-                    return null;
-                  },
-                  controller: _passwordController,
-                ),
-                12.verticalSpace,
-                CustomTextFormField(
-                  hintText: "Confirm password",
-                  isPassword: true,
-                  myKey: _key4,
-                  validate: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please confirm your password';
-                    }
-                    if (value != _passwordController.text) {
-                      return 'Passwords do not match';
-                    }
-                    return null;
-                  },
-                  controller: _confirmPasswordController,
-                ),
-                30.verticalSpace,
-                AppButton(
-                  text: "Register",
-                  onTap: () {
-                    if (_key1.currentState!.validate() &&
-                        _key2.currentState!.validate() &&
-                        _key3.currentState!.validate() &&
-                        _key4.currentState!.validate()) {
-                      Navigator.pushNamed(context, AppRoutes.homeScreen);
-                    }
-                  },
-                ),
-                193.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Already have an account?",
-                      style: AppTextStyle.f15dark.copyWith(fontSize: 14.sp),
+            child: BlocListener<AuthCubit, AuthState>(
+              listener: (context, state) {
+                if (state is RegisterLaodingState) {
+                  showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (context) => AlertDialog(
+                      content: Center(child: CircularProgressIndicator()),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
+                  );
+                } else if (state is RegisterSuccessState) {
+                  Navigator.of(context, rootNavigator: true).pop();
+                  Navigator.pushNamed(context, AppRoutes.bottomNavBarScreen);
+                } else if (state is RegisterErrorState) {
+                  Navigator.of(context, rootNavigator: true).pop();
+                  showDialog(
+                    context: context,
+                    // barrierDismissible: false,
+                    builder: (context) => Text("Error"),
+                  );
+                }
+              },
+
+              child: Form(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                key: _key1,
+                child: Column(
+                  children: [
+                    11.verticalSpace,
+                    ArrowBack(),
+                    29.verticalSpace,
+                    Align(
+                      alignment: Alignment.centerLeft,
                       child: Text(
-                        "Login Now",
-                        style: AppTextStyle.f14darkGray.copyWith(
-                          color: AppColors.main,
+                        "Hello! Register to get\nstarted",
+                        style: AppTextStyle.f30Regular,
+                      ),
+                    ),
+                    32.verticalSpace,
+                    TextFormField(
+                      onTapOutside: (event) {
+                        FocusManager.instance.primaryFocus?.unfocus();
+                      },
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Username is required';
+                        }
+
+                        if (value.length < 3) {
+                          return 'Username must be at least 3 characters';
+                        }
+                        return null;
+                      },
+                      // autovalidateMode: AutovalidateMode.onUnfocus,
+                      controller: _usernameController,
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        filled: true,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: AppColors.border),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: AppColors.main),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
+                        hintText: "Username",
+                      ),
+                    ),
+                    12.verticalSpace,
+                    TextFormField(
+                      onTapOutside: (event) {
+                        FocusManager.instance.primaryFocus?.unfocus();
+                      },
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Please enter your email';
+                        }
+                        if (!RegExp(r'@').hasMatch(value))
+                          return 'email is worng';
+                        return null;
+                      },
+                      // autovalidateMode: AutovalidateMode.onUnfocus,
+                      controller: _emailController,
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        filled: true,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: AppColors.border),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: AppColors.main),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
+                        hintText: 'Email',
+                      ),
+                    ),
+                    12.verticalSpace,
+                    TextFormField(
+                      obscureText: true,
+                      onTapOutside: (event) {
+                        FocusManager.instance.primaryFocus?.unfocus();
+                      },
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Please enter your password';
+                        }
+                        if (value.length<8)
+                          return 'password should be at least 8 caharacters';
+                        return null;
+                      },
+                      // autovalidateMode: AutovalidateMode.onUnfocus,
+                      controller: _passwordController,
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        filled: true,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: AppColors.border),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: AppColors.main),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
+                        hintText: "Password",
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            setState(() {
+                              isObscure = !isObscure;
+                            });
+                          },
+                          child: Icon(Icons.visibility),
                         ),
                       ),
                     ),
+                    12.verticalSpace,
+                    TextFormField(
+                      obscureText: true,
+                      onTapOutside: (event) {
+                        FocusManager.instance.primaryFocus?.unfocus();
+                      },
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please confirm your password';
+                        }
+                        if (value != _passwordController.text) {
+                          return 'Passwords do not match';
+                        }
+                        return null;
+                      },
+                      autovalidateMode: AutovalidateMode.onUnfocus,
+                      controller: _confirmPasswordController,
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        filled: true,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: AppColors.border),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: AppColors.main),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
+                        hintText: "Confirm password",
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            setState(() {
+                              isObscure = !isObscure;
+                            });
+                          },
+                          child: Icon(Icons.visibility),
+                        ),
+                      ),
+                    ),
+                    30.verticalSpace,
+                    AppButton(
+                      text: "Register",
+                      onTap: () {
+                        if (_key1.currentState!.validate()) {
+                          context.read<AuthCubit>().register(
+                            name: _usernameController.text,
+                            email: _emailController.text,
+                            password: _passwordController.text,
+                            passwordConfirmation:
+                                _confirmPasswordController.text,
+                          );
+                          // Navigator.pushNamed(context, AppRoutes.homeScreen);
+                        }
+                      },
+                    ),
+                    193.verticalSpace,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Already have an account?",
+                          style: AppTextStyle.f15dark.copyWith(fontSize: 14.sp),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            "Login Now",
+                            style: AppTextStyle.f14darkGray.copyWith(
+                              color: AppColors.main,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
         ),

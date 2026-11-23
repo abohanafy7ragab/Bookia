@@ -3,6 +3,13 @@ import 'package:dio/dio.dart';
 class DioExceptionHandler {
   DioExceptionHandler._();
 
+  static String handle(Object error) {
+    if (error is DioException) {
+      return handleDioException(error);
+    }
+    return 'error';
+  }
+
   /// Converts any [DioException] into a readable message.
   static String handleDioException(DioException e) {
     switch (e.type) {
