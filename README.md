@@ -18,7 +18,7 @@
 #Book Details
 <img width="770" height="1627" alt="image" src="https://github.com/user-attachments/assets/9a3f3de2-e05d-4505-9728-b5804c8545ba" />
 
-#Bootom Navigation bar screen 
+#Bottom Navigation bar screen 
 <img width="757" height="1600" alt="image" src="https://github.com/user-attachments/assets/a918694d-58cc-4839-98d7-75b15498dc13" />
 
 #cart screen
@@ -30,5 +30,8 @@
 #forget password screen
 <img width="695" height="1470" alt="image" src="https://github.com/user-attachments/assets/5563f8de-e0b8-4e6f-9412-76a44afe697a" />
 
-#OTP verivcation screen
+#OTP verifcation screen
 <img width="682" height="1435" alt="image" src="https://github.com/user-attachments/assets/4e3107c8-97e6-4a82-94fe-68254358ad8a" />
+
+#create new password screen
+<img width="695" height="1470" alt="image" src="https://github.com/user-attachments/assets/1fe9fc64-b7d1-4ce3-b591-f8503ccab91e" />

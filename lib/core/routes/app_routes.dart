@@ -9,4 +9,5 @@ class AppRoutes {
   static const String forgetPasswordScreen = "forget_password_screen";
   static const String OtpVerifcation = "otp_verfcation_screen";
   static const String createNewPasswordScreen = "create_new_password_screen";
+  static const String PasswordChangedScreen = "password_changed_screen";
 }

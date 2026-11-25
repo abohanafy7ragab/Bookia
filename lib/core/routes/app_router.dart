@@ -9,6 +9,7 @@ import 'package:bookia/features/forget_password/presentation/cubit/forget_passwo
 import 'package:bookia/features/forget_password/presentation/ui/create_new_password_screen.dart';
 import 'package:bookia/features/forget_password/presentation/ui/forget_password_screen.dart';
 import 'package:bookia/features/forget_password/presentation/ui/otp_verifcation.dart';
+import 'package:bookia/features/forget_password/presentation/ui/password_changed_screen.dart';
 import 'package:bookia/features/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/features/home/presentation/ui/home_screen.dart';
 import 'package:bookia/features/home/presentation/ui/search_screen.dart';
@@ -73,6 +74,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => OtpVerifcation());
       case AppRoutes.createNewPasswordScreen:
         return MaterialPageRoute(builder: (_) => CreateNewPasswordScreen());
+      case AppRoutes.PasswordChangedScreen:
+        return MaterialPageRoute(builder: (_) => PasswordChangedScreen());
     }
     return null;
   }
