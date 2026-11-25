@@ -26,3 +26,6 @@
 
 #profile screen
 <img width="852" height="1802" alt="image" src="https://github.com/user-attachments/assets/220e5403-dc4a-437a-9672-84f16814500d" />
+
+#forget password screen
+<img width="695" height="1470" alt="image" src="https://github.com/user-attachments/assets/5563f8de-e0b8-4e6f-9412-76a44afe697a" />

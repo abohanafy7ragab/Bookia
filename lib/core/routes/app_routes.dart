@@ -6,4 +6,6 @@ class AppRoutes {
   static const String searchScreen = "search_screen";
   static const String bookDetailsScreen = "book_details_screen";
   static const String bottomNavBarScreen = "bottom_nav_bar_screen";
+  static const String forgetPasswordScreen = "forget_password_screen";
+  static const String OtpVerifcation = "otp_verfcation_screen";
 }

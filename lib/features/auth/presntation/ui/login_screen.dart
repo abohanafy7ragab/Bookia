@@ -21,7 +21,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _key1 = GlobalKey<FormState>();
 
-
   String? validatePassword(String? value) {
     final v = value ?? '';
     if (v.isEmpty) return 'password required';
@@ -49,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  bool isObscure =true;
+  bool isObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +135,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       validator: (value) {
                         final v = value ?? '';
                         if (v.isEmpty) return 'password required';
-                        if (v.length < 8) return 'password should be at least 8 charachter';
+                        if (v.length < 8)
+                          return 'password should be at least 8 charachter';
                         return null;
                       },
                       // autovalidateMode: AutovalidateMode.onUnfocus,
@@ -156,26 +156,32 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderRadius: BorderRadius.circular(8),
                           borderSide: BorderSide(color: Colors.red),
                         ),
-                        hintText:"Enter your password",
-                        suffixIcon: 
-                             InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    isObscure = !isObscure;
-                                  });
-                                },
-                                child: Icon(Icons.visibility),
-                              )
-                            ,
+                        hintText: "Enter your password",
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            setState(() {
+                              isObscure = !isObscure;
+                            });
+                          },
+                          child: Icon(Icons.visibility),
+                        ),
                       ),
                     ),
                     13.verticalSpace,
                     Align(
                       alignment: Alignment.centerRight,
-                      child: Text(
-                        "Forgot Password?",
-                        style: AppTextStyle.f15dark.copyWith(
-                          color: Color(0xff6A707C),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.forgetPasswordScreen,
+                          );
+                        },
+                        child: Text(
+                          "Forgot Password?",
+                          style: AppTextStyle.f15dark.copyWith(
+                            color: Color(0xff6A707C),
+                          ),
                         ),
                       ),
                     ),
