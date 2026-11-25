@@ -35,3 +35,6 @@
 
 #create new password screen
 <img width="695" height="1470" alt="image" src="https://github.com/user-attachments/assets/1fe9fc64-b7d1-4ce3-b591-f8503ccab91e" />
+
+#password changed
+<img width="695" height="1470" alt="image" src="https://github.com/user-attachments/assets/127657b4-fd1f-420f-8cfc-db4d184f4805" />
