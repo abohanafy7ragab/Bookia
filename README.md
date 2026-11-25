@@ -29,3 +29,6 @@
 
 #forget password screen
 <img width="695" height="1470" alt="image" src="https://github.com/user-attachments/assets/5563f8de-e0b8-4e6f-9412-76a44afe697a" />
+
+#OTP verivcation screen
+<img width="682" height="1435" alt="image" src="https://github.com/user-attachments/assets/4e3107c8-97e6-4a82-94fe-68254358ad8a" />

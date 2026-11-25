@@ -8,4 +8,5 @@ class AppRoutes {
   static const String bottomNavBarScreen = "bottom_nav_bar_screen";
   static const String forgetPasswordScreen = "forget_password_screen";
   static const String OtpVerifcation = "otp_verfcation_screen";
+  static const String createNewPasswordScreen = "create_new_password_screen";
 }
